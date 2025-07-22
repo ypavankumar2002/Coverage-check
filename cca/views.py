@@ -1,26 +1,10 @@
 from django.shortcuts import render
+from .forms import CoverageForm
+import google.generativeai as genai
 
 # Create your views here.
 
-
-
-# def home(req):
-
-#     return render(req, 'index.html')
-
-
-from django.shortcuts import render
-from .forms import CoverageForm
-# import openai
-import os
-import google.generativeai as genai
-
-
-
-# openai.api_key = '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' 
- # Replace with your key
-
-# Api_key = 'AIzaSyBWIoT1qb-4mcM2ROhgwfhAU3vqGOm0Bow'
+# Api_key = 'AIzaSyBWIoT1qb-4mcM2ROhgwfhAU3vqGOm0Bow' 
 # genai.configure(api_key=Api_key)
 
 def get_health_cover_recommendation(name, age, city, income, dependents):
@@ -29,7 +13,7 @@ def get_health_cover_recommendation(name, age, city, income, dependents):
         f"Name: {name}\nAge: {age}\nCity: {city}\nAnnual Income: ₹{income}\n"
         f"Dependents: {dependents}\nReturn only the numeric amount, no explanation."
     )
-    Api_key = 'AIzaSyBWIoT1qb-4mcM2ROhgwfhAU3vqGOm0Bow'
+    Api_key = 'AIzaSyBWIoT1qb-4mcM2ROhgwfhAU3vqGOm0Bow'    # API key disabled
     genai.configure(api_key=Api_key) 
     model = genai.GenerativeModel("gemini-2.0-flash")
     chat = model.start_chat()
